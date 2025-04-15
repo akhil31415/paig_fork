@@ -71,8 +71,8 @@ jobs:
           build-args: |
             USE_LOCAL_WHEEL=true
           tags: |
-            ${{ env.DOCKER_HUB}}/${{ env.DOCKER_IMAGE_NAME }}:latest
-            ${{ env.DOCKER_HUB}}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.workflow_run.head_branch }}-${{ steps.short_sha.outputs.SHORT_SHA }}
+            ${{ vars.DOCKER_HUB}}/${{ vars.DOCKER_IMAGE_NAME }}:latest
+            ${{ vars.DOCKER_HUB}}/${{ vars.DOCKER_IMAGE_NAME }}:${{ github.event.workflow_run.head_branch }}-${{ steps.short_sha.outputs.SHORT_SHA }}
           labels: |
             maintainer=privacera
             org.opencontainers.image.vendor=Privacera
