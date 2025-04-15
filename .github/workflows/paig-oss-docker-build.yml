@@ -44,8 +44,8 @@ jobs:
           file: ./docker/Dockerfile
           push: true
           tags: |
-            privacera/paig-oss:latest
-            privacera/paig-oss:${{ github.event.workflow_run.head_branch }}-${{ steps.short_sha.outputs.SHORT_SHA }}
+            akhil31415/paig-oss:latest
+            akhil31415/paig-oss:${{ github.event.workflow_run.head_branch }}-${{ steps.short_sha.outputs.SHORT_SHA }}
           labels: |
             maintainer=privacera
             org.opencontainers.image.vendor=Privacera
