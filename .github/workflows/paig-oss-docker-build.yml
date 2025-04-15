@@ -28,6 +28,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+    
+      - name: check running directory
+        run: |
+          pwd
+          ls -la
 
       - name: Build and push Docker image
         id: push
