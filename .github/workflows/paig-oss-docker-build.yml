@@ -15,12 +15,10 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_branch }}
 
       - name: Set short SHA
         id: short_sha
-        run: echo "SHORT_SHA=$(echo ${{ github.event.workflow_run.head_sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
+        run: echo "SHORT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -63,7 +61,7 @@ jobs:
             USE_LOCAL_WHEEL=${{ vars.USE_LOCAL_WHEEL }}
           tags: |
             ${{ vars.DOCKER_HUB}}/${{ vars.DOCKER_IMAGE_NAME }}:latest
-            ${{ vars.DOCKER_HUB}}/${{ vars.DOCKER_IMAGE_NAME }}:${{ github.event.workflow_run.head_branch }}-${{ steps.short_sha.outputs.SHORT_SHA }}
+            ${{ vars.DOCKER_HUB}}/${{ vars.DOCKER_IMAGE_NAME }}:${{ github.ref_name }}-${{ steps.short_sha.outputs.SHORT_SHA }}
           labels: |
             maintainer=privacera
             org.opencontainers.image.vendor=Privacera
